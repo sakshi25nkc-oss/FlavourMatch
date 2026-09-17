@@ -886,8 +886,8 @@ geo_html = """
 
 components.html(geo_html, height=45)
 
-user_lat = st.sidebar.number_input("Current Latitude", value=st.session_state["user_lat"], format="%.4f")
-user_lon = st.sidebar.number_input("Current Longitude", value=st.session_state["user_lon"], format="%.4f")
+user_lat = st.session_state["user_lat"]
+user_lon = st.session_state["user_lon"]
 
 # Extended Location Radius Slider (1.0 to 50.0 km range)
 max_distance_km = st.sidebar.slider("Radius Range (km)", 1.0, 50.0, 35.0, step=1.0)
@@ -1148,7 +1148,7 @@ st.markdown("---")
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "Group Matcher & Splitter", 
     "Slots Booking & Queue", 
-    "3D Table & Floor Plan",
+    "Interactive Dining Area View",
     "Menus & AI Inspector", 
     "Group Swipe Lobby",
     "Community Audit Portal",
@@ -1228,7 +1228,7 @@ with tab2:
 
 # --- TAB 3: 3D TABLE & FLOOR PLAN VIEWER ---
 with tab3:
-    st.subheader("Interactive 3D Floor Plan & Table Selection")
+    st.subheader("Interactive Dining Area View & Table Selection")
     st.write("Choose your exact preferred seating location inside the restaurant.")
     
     col_fp1, col_fp2 = st.columns([1, 2])
@@ -1244,8 +1244,8 @@ with tab3:
         if st.button("Reserve Exact Table"):
             st.success(f"Reserved {selected_table_num} in **{table_zone}** zone!")
 
-    with col_fp2:
-        st.info("Interactive 3D Seating Map")
+    # with col_fp2:
+    #     st.info("Interactive Dining Area Seating Map")
 
 # --- TAB 4: MENUS & AI INGREDIENT INSPECTOR ---
 with tab4:
